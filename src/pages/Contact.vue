@@ -1,9 +1,18 @@
 <template>
-	<h1>Contact me!</h1>
+	<Layout>
+		<h1>Contact me!</h1>
+		<test/>
+	</Layout>
 </template>
 
 <script>
-	export default {};
+	import test from "../components/test";
+
+	export default {
+		components: {
+			test
+		}
+	};
 </script>
 
 <style>
