@@ -8,11 +8,15 @@
 <script>
 	// /spaces/{space_id}/environments/{environment_id}/content_types/{content_type_id}?access_token={access_token}
 	let query;
-	const contentfulBaseAPI = "https://cdn.contentful.com";
-	const space_id = "c87kqyb1kdox";
-	const environment_id = "master";
+	const contentfulBaseAPI = process.env.CONTENTFUL_BASE_API;
+	console.log(contentfulBaseAPI);
+	// const space_id = "c87kqyb1kdox";
+	const space_id = process.env.CONTENTFUL_SPACE_ID;
+	// const environment_id = "master";
+	const environment_id = process.env.CONTENTFUL_ENVIRONMENT_ID;
 	const content_type_id = "quizQuestion";
-	const access_token = "S_P63NpczcCqZu4R-A4Z-zgZo07kqWRObijmm3MmsKg";
+	// const access_token = "S_P63NpczcCqZu4R-A4Z-zgZo07kqWRObijmm3MmsKg";
+	const access_token = process.env.CONTENTFUL_ACCESS_TOKEN;
 
 	fetch(
 		// `${contentfulBaseAPI}/spaces/c87kqyb1kdox?access_token=S_P63NpczcCqZu4R-A4Z-zgZo07kqWRObijmm3MmsKg`
