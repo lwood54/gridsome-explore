@@ -1,28 +1,32 @@
 <template>
-	<div class="tab-container">
-		<div
-			class="tab"
-			:class="{ 'tab-active': activeTab === 'mail' }"
-			@click="handleClicked('mail')"
-		>CANCEL VIA EMAIL</div>
-		<div
-			class="tab"
-			:class="{ 'tab-active': activeTab === 'web'}"
-			@click="handleClicked('web')"
-		>CANCEL VIA WEB</div>
-		<div
-			class="tab"
-			:class="{ 'tab-active': activeTab === 'paper'}"
-			@click="handleClicked('paper')"
-		>CANCEL VIA PAPER</div>
+	<div>
+		<h1>Content:</h1>
+		<h3>{{content}}</h3>
 	</div>
 </template>
 
 <script>
+	let query;
+	fetch("https://cdn.contentful.com", {
+		method: "POST",
+		headers: {
+			"content-type": "application/json",
+			authorization: "Bearer S_P63NpczcCqZu4R-A4Z-zgZo07kqWRObijmm3MmsKg"
+		},
+		body: JSON.stringify({
+			query
+		})
+	})
+		.then(res => res.json())
+		.then(response => {
+			console.log(response);
+			const { data } = response;
+		});
 	export default {
 		data() {
 			return {
-				activeTab: "mail"
+				activeTab: "mail",
+				content: ""
 			};
 		},
 		methods: {
