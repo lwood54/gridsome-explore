@@ -6,22 +6,42 @@
 </template>
 
 <script>
+	// /spaces/{space_id}/environments/{environment_id}/content_types/{content_type_id}?access_token={access_token}
 	let query;
-	fetch("https://cdn.contentful.com", {
-		method: "POST",
-		headers: {
-			"content-type": "application/json",
-			authorization: "Bearer S_P63NpczcCqZu4R-A4Z-zgZo07kqWRObijmm3MmsKg"
-		},
-		body: JSON.stringify({
-			query
+	const contentfulBaseAPI = "https://cdn.contentful.com";
+	const space_id = "c87kqyb1kdox";
+	const environment_id = "master";
+	const content_type_id = "quizQuestion";
+	const access_token = "S_P63NpczcCqZu4R-A4Z-zgZo07kqWRObijmm3MmsKg";
+
+	fetch(
+		// `${contentfulBaseAPI}/spaces/c87kqyb1kdox?access_token=S_P63NpczcCqZu4R-A4Z-zgZo07kqWRObijmm3MmsKg`
+		`${contentfulBaseAPI}/spaces/${space_id}/environments/${environment_id}/entries?access_token=${access_token}`
+	)
+		.then(function(response) {
+			return response.json();
 		})
-	})
-		.then(res => res.json())
-		.then(response => {
-			console.log(response);
-			const { data } = response;
+		.then(res => {
+			console.log(res);
 		});
+	// .then(function(myJson) {
+	// 	console.log(JSON.stringify(myJson));
+	// });
+	// fetch("https://cdn.contentful.com", {
+	// 	method: "POST",
+	// 	headers: {
+	// 		"content-type": "application/json",
+	// 		authorization: "Bearer S_P63NpczcCqZu4R-A4Z-zgZo07kqWRObijmm3MmsKg"
+	// 	},
+	// 	body: JSON.stringify({
+	// 		query
+	// 	})
+	// })
+	// 	.then(res => res.json())
+	// 	.then(response => {
+	// 		console.log(response);
+	// 		const { data } = response;
+	// 	});
 	export default {
 		data() {
 			return {
